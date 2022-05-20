@@ -51,3 +51,8 @@ Route::get('/idc',function(){
 Route::get('/idp',function(){
     return view('user.profile');
 });
+
+
+Route::get('/edit',function(){
+    return view('user.edit');
+});
