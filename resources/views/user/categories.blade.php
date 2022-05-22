@@ -22,7 +22,6 @@ Categories
 <br>
 @endsection
 @section('rnav')
-@section('rnav')
 <li class="nav-item dropdown" style="margin-top: -20px ;margin-right:45px;">
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -31,23 +30,23 @@ Categories
                 style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/idp">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Purchases</a></li>
+            <li><a class="dropdown-item" href="/purchases">Purchases</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Favorite</a></li>
+            <li><a class="dropdown-item" href="/favorite">Favorite</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="/chpassword">Edit Password</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="/">Logout</a></li>
             {{-- <li>
                 <hr class="dropdown-divider">
             </li> --}}
@@ -58,5 +57,4 @@ Categories
 
 
 </li>
-@endsection
 @endsection

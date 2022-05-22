@@ -16,12 +16,9 @@ Your Profile
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center">
+                        <div class="d-flex flex-column align-items-center text-center" style="height: 300px;padding: 50px;">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                class="rounded-circle" width="150">
-                            <div class="mt-3">
-                                <h4>User Name</h4>
-                            </div>
+                                class="rounded-circle" width="200" >
                         </div>
                     </div>
                 </div>
@@ -360,23 +357,23 @@ $('.image-upload-wrap').removeClass('image-dropping');
                 style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/idp">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Purchases</a></li>
+            <li><a class="dropdown-item" href="/purchases">Purchases</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Favorite</a></li>
+            <li><a class="dropdown-item" href="/favorite">Favorite</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="/chpassword">Edit Password</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            <li><a class="dropdown-item" href="/">Logout</a></li>
             {{-- <li>
                 <hr class="dropdown-divider">
             </li> --}}

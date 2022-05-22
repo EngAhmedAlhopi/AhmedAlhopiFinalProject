@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/log', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/user',function(){
     return view('layouts.user');
@@ -48,11 +48,32 @@ Route::get('/idc',function(){
     return view('user.contact');
 });
 
-Route::get('/idp',function(){
+Route::get('/profile',function(){
     return view('user.profile');
 });
 
 
 Route::get('/edit',function(){
     return view('user.edit');
+});
+
+Route::get('/purchases',function(){
+    return view('user.purchases');
+});
+
+Route::get('/favorite',function(){
+    return view('user.favorite');
+});
+
+Route::get('/chpassword',function(){
+    return view('user.chpassword');
+});
+
+Route::get('/reg',function(){
+    return view('auth.register');
+});
+
+
+Route::get('/admin',function(){
+    return view('layouts.admin');
 });

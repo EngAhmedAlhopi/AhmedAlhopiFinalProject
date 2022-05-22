@@ -76,7 +76,7 @@
                             <a class="nav-link" href="/ida">Who are we?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="idc">Call us</a>
+                            <a class="nav-link" href="idc">Contact us</a>
                         </li>
                     </ul>
                     {{-- <form class="d-flex" role="search">

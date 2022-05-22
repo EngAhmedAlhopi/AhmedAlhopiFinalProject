@@ -1,6 +1,11 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('layouts.user')
+@section('title')
+    Login
+@endsection
+@section('container')
+<br>
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -70,4 +75,15 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
+
+@endsection
+
+
+@section('rnav')
+<a href="/log"> <button class="btn btn-outline-success" type="button" style="margin-right: 15px">
+        Login</button></a>
+<a href="/reg"> <button class="btn btn-outline-info" type="submit">Register</button></a>
 @endsection
