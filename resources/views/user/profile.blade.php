@@ -16,10 +16,11 @@ Your Profile
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center" style="height: 300px;padding: 50px;">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                class="rounded-circle" width="200" >
+                        <div class="d-flex flex-column align-items-center text-center" style="height: 340px;padding: 0px;">
+                            <img src="{{ $user->picture }}"  alt="Admin"
+                                class="rounded-circle" width="280" >
                         </div>
+                        {{-- src="storage/pictures/1-AhmedAlhopi-1653578594-css.png" --}}
                     </div>
                 </div>
             </div>
@@ -32,7 +33,7 @@ Your Profile
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <h6>Ahmed Alhopi</h6>
+                                <h6>{{ $user->name }}</h6>
                             </div>
                         </div>
                         <hr>
@@ -41,7 +42,7 @@ Your Profile
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <h6>ahmedalhopi991@gmail.com</h6>
+                                <h6>{{ $user->email }}</h6>
                             </div>
                         </div>
                         <hr>
@@ -50,7 +51,7 @@ Your Profile
                                 <h6 class="mb-0">Phone</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <h6>0595421229</h6>
+                                <h6>{{ $user->phone }}</h6>
                             </div>
                         </div>
                         <hr>
@@ -59,7 +60,7 @@ Your Profile
                                 <h6 class="mb-0">Mobile</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <h6>08-2130178</h6>
+                                <h6>{{ $user->mobile }}</h6>
                             </div>
                         </div>
                         <hr>
@@ -68,7 +69,7 @@ Your Profile
                                 <h6 class="mb-0">Address</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                <h6>Rafah</h6>
+                                <h6>{{ $user->address }}</h6>
                             </div>
                         </div>
                         <hr>

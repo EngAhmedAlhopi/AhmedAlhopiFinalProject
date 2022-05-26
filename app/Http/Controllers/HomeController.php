@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = Categorie::all();
+    $populars = Product::all()->where('id','<','10')->sortBy('id');
+    return view('auth.login',compact('categories','populars'));
+        // return view('home');
     }
 }

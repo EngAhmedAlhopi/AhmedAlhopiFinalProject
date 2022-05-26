@@ -16,9 +16,9 @@ Your Profile
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center" style="height: 300px;padding: 50px;">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
-                                class="rounded-circle" width="200" >
+                        <div class="d-flex flex-column align-items-center text-center" style="height: 340px;padding: 0px;">
+                            <img src="{{ $user->picture }}" alt="Admin"
+                                class="rounded-circle" width="280" >
                         </div>
                     </div>
                 </div>
@@ -26,84 +26,98 @@ Your Profile
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
-
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Full Name</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Phone</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="number" class="form-control">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Mobile</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="number" class="form-control">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Address</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="file-upload">
-                                <button class="file-upload-btn" type="button"
-                                    onclick="$('.file-upload-input').trigger( 'click' )">Change
-                                    Image</button>
-
-                                <div class="image-upload-wrap">
-                                    <input class="file-upload-input" type='file' onchange="readURL(this);"
-                                        accept="image/*" />
-                                    <div class="drag-text">
-                                        <h3>Drag and drop an Image</h3>
-                                    </div>
-                                </div>
-                                <div class="file-upload-content">
-                                    <img class="file-upload-image" src="#" alt="your image" />
-                                    <div class="image-title-wrap">
-                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
-                                                class="image-title">Uploaded Image</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="wer">
+                        <form action="/edit" method="POST" enctype="multipart/form-data">
+                            <input type="number" name="id" value="{{ $user->id }}" hidden>
+                            @csrf
                             <div class="row">
-                                <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank">Save</a>
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Full Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @csrf
+                                    <input type="text" class="form-control" value="{{ $user->name }}" name="name">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @csrf
+                                    <input type="email" class="form-control" value="{{ $user->email }}" name="email" disabled >
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @csrf
+                                    <input type="text" class="form-control" value="{{ $user->phone }}" name="phone">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Mobile</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @csrf
+                                    <input type="text" class="form-control" value="{{ $user->mobile }}" name="mobile">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    @csrf
+                                    <input type="text" class="form-control" value="{{ $user->address }}" name="address">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="file-upload">
+                                    <button class="file-upload-btn" type="button"
+                                        onclick="$('.file-upload-input').trigger( 'click' )">Change
+                                        Image</button>
+
+                                    <div class="image-upload-wrap">
+                                        <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                            accept="image/*" name="picture"/>
+                                        <div class="drag-text">
+                                            <h3>Drag and drop an Image</h3>
+                                        </div>
+                                    </div>
+                                    <div class="file-upload-content">
+                                        <img class="file-upload-image" src="#" alt="your image" />
+                                        <div class="image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                                    class="image-title">Uploaded Image</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div>
+                                    <label for="formFileLg" class="form-label">Large file input example</label>
+                                    <input class="form-control form-control-lg" id="picture" name="picture" type="file" >
+                                </div> --}}
+                            </div>
+                            <hr>
+                            <div class="wer">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{-- <a class="btn btn-info " target="__blank">Save</a> --}}
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                        </form>
 
             </div>
 

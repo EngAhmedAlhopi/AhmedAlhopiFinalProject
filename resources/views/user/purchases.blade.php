@@ -7,250 +7,51 @@ Purchases
 <div class="table">
 
 
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Product</th>
-        <th scope="col">Price</th>
-        <th scope="col">Purchase Date</th>
-        <th scope="col">Received Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Picture</th>
+                <th scope="col">Purchase Date</th>
+                <th scope="col">Received Date</th>
+            </tr>
+        </thead>
+        <tbody>
 
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
+            @foreach ($purchases as $purchase)
 
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
-
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>asdasds</td>
-        <td>afssagd</td>
-      </tr>
+            <tr>
+                <th scope="row">{{ ++$i }}</th>
+                <td>{{ $purchase->name }}</td>
+                <td>{{ $purchase->prise }} $</td>
+                <td><img src="{{ $purchase->picture }}" alt="Admin" style="height: 50px;width: 50px;"></td>
+                <td>{{ $purchase->created_at }}</td>
+                <td>{{ $purchase->updated_at }}</td>
+            </tr>
+            @endforeach
 
 
-    </tbody>
-  </table>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/jq/jquery.min.js"></script>
+
+
+        </tbody>
+    </table>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/jq/jquery.min.js"></script>
 
 </div>
 @endsection
 @section('style')
-    <style>
-.table{
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-    </style>
+<style>
+    .table {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+</style>
 @endsection
 
 @section('rnav')

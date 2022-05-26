@@ -50,11 +50,15 @@
                                 Categories
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/ids">Laptop</a></li>
+                            @foreach ($categories as $categorie)
+                                <li><a class="dropdown-item" href="/ids">{{ $categorie->name }}</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/ids">PC</a></li>
+
+                                @endforeach
+
+                                {{-- <li><a class="dropdown-item" href="/ids">PC</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -62,7 +66,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="ids">Accessories</a></li>
+                                <li><a class="dropdown-item" href="ids">Accessories</a></li> --}}
                                 {{-- <li>
                                     <hr class="dropdown-divider">
                                 </li> --}}
