@@ -29,8 +29,8 @@ class HomeController extends Controller
         $categories = Categorie::all();
     $populars = Product::all()->where('id','<','10')->sortBy('id');
     $user = User::find(auth()->user()->id);
-    // return view('user.loged',compact('categories','populars','user'));
-    return view('home',compact('categories','populars','user'));
+    return view('user.loged',compact('categories','populars','user'));
+    // return view('home',compact('categories','populars','user'));
         // return view('loged');
     }
 }

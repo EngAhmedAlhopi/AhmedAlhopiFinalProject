@@ -63,9 +63,7 @@ Route::get('/ida',function(){
 });
 
 
-Route::get('/idc',function(){
-    return view('user.contact');
-});
+Route::get('/idc',[UserController::class,'call']);
 
 // Route::get('/profile',function(){
 //     // $categories = Categorie::all();
@@ -91,13 +89,13 @@ Route::get('/purchases',[UserController::class,'indexPurchase'])->name('indexPur
 Route::get('/favorite',[UserController::class,'indexFavorite'])->name('indexFavorite');
 
 Route::get('/chpassword',function(){
-    $user = User::where('id',auth()->user()->id)->get();
-    // $user = DB::table('users')->find(1);
+    $user = User::find(auth()->user()->id);
     $categories = Categorie::all();
-    // $user = User::find(1);
-    // dd($user);
-    return view('auth.passwords.reset',compact('user','categories'));
+    $result = 'Try to enter a password that is difficult to guess.';
+    return view('user.chpassword',compact('user','categories','result'));
 });
+
+Route::post('/chpassword',[UserController::class,'resetPassword'])->name('resetPassword');
 
 Route::get('/reg',function(){
     $categories = Categorie::all();
@@ -116,4 +114,5 @@ Route::get('/preference/{id}',[UserController::class,'addFavorite'])->name('addF
 
 Auth::routes();
 
+// Route::post('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');

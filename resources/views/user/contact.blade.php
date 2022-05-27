@@ -17,7 +17,8 @@ Contact Us
             <div class="form-group">
                 <label class="col-md-3 control-label" for="name">Name</label>
                 <div class="col-md-9">
-                    <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                    <input id="name" name="name" type="text" placeholder="Your name" class="form-control"
+                        value="{{ $user['name'] }}" />
                 </div>
             </div>
 
@@ -25,7 +26,8 @@ Contact Us
             <div class="form-group">
                 <label class="col-md-3 control-label" for="email">Your E-mail</label>
                 <div class="col-md-9">
-                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control"
+                        value="{{ $user['email'] }}">
                 </div>
             </div>
 
@@ -91,13 +93,15 @@ Contact Us
 </style>
 @endsection
 
+
+@if ($found)
 @section('rnav')
 <li class="nav-item dropdown" style="margin-top: -20px ;margin-right:45px;">
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
-                style="margin-left: 10px;border-radius: 50%">
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px"
+                height="30px" style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
@@ -116,7 +120,18 @@ Contact Us
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            <li>
+                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
+                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{-- {{ __('Logout') }} --}}Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+            </li>
             {{-- <li>
                 <hr class="dropdown-divider">
             </li> --}}
@@ -128,3 +143,44 @@ Contact Us
 
 </li>
 @endsection
+@else
+@section('rnav')
+{{-- <a href="/log"> <button class="btn btn-outline-success" type="button" style="margin-right: 15px">
+        Login</button></a>
+<a href="/reg"> <button class="btn btn-outline-info" type="submit">Register</button></a> --}}
+<ul class="navbar-nav ms-auto">
+    <!-- Authentication Links -->
+    @guest
+    @if (Route::has('login'))
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+    </li>
+    @endif
+
+    @if (Route::has('register'))
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+    </li>
+    @endif
+    @else
+    <li class="nav-item dropdown">
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" v-pre>
+            {{ Auth::user()->name }}
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
+    </li>
+    @endguest
+</ul>
+@endsection
+@endif

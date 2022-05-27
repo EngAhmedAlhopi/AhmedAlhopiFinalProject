@@ -13,24 +13,27 @@ Edit Password
             <!--Password must contain one lowercase letter, one number, and be at least 7 characters long.-->
 
             <div class="card-text">
-                <form>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Welcome !</strong> Try to enter a password that is difficult to guess.
-                        <a class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </a>
+                <form method="POST" action="{{ route('resetPassword') }}">
+                    @csrf
+                    <h6 class="msg">{{ $result }}</h6>
+                    <br>
+                    <div class="form-group">
+                        <label for="oldpass">
+                            <h6>Old Password</h6>
+                        </label>
+                        <input type="password" class="form-control form-control-sm" id="oldpass" name="oldpass">
                     </div>
                     <div class="form-group">
-                        <label for="oldpass"><h6>Old Password</h6></label>
-                        <input type="password" class="form-control form-control-sm" id="oldpass">
+                        <label for="newpass">
+                            <h6>New Password</h6>
+                        </label>
+                        <input type="password" class="form-control form-control-sm" id="newpass" name="newpass">
                     </div>
                     <div class="form-group">
-                        <label for="newpass"><h6>New Password</h6></label>
-                        <input type="password" class="form-control form-control-sm" id="newpass">
-                    </div>
-                    <div class="form-group">
-                        <label for="rpass"><h6>Repeat password</h6></label>
-                        <input type="password" class="form-control form-control-sm" id="rpass">
+                        <label for="rpass">
+                            <h6>Repeat password</h6>
+                        </label>
+                        <input type="password" class="form-control form-control-sm" id="rpass" name="rpass">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block submit-btn" id="send">Confirm</button>
                 </form>
@@ -42,15 +45,21 @@ Edit Password
 @endsection
 @section('style')
 <style>
+    .msg {
+        font-size: medium;
+        color: red;
+    }
+
     .ed {
         /* border: solid 2px red; */
         width: 360px;
-        height: auto;;
+        height: auto;
+        ;
         margin: auto;
     }
 
 
-    #send{
+    #send {
         width: 100%;
     }
 
@@ -119,12 +128,13 @@ Edit Password
 @endsection
 
 @section('rnav')
+@section('rnav')
 <li class="nav-item dropdown" style="margin-top: -20px ;margin-right:45px;">
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
-                style="margin-left: 10px;border-radius: 50%">
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px"
+                height="30px" style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
@@ -143,7 +153,18 @@ Edit Password
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+            <li>
+                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
+                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                        {{-- {{ __('Logout') }} --}}Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+            </li>
             {{-- <li>
                 <hr class="dropdown-divider">
             </li> --}}
@@ -154,4 +175,5 @@ Edit Password
 
 
 </li>
+@endsection
 @endsection
