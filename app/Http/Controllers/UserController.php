@@ -83,29 +83,33 @@ class UserController extends Controller
 
 public function indexPurchase(){
 
-    // $test = Purchase::where('user_id',1)->get();
-    // $arr = $test->product_id;
-    // dd($test);
-    // $purchases = Product::whereIn('id',$arr)->get();
-    // dd($purchases);
     $categories = Categorie::all();
-        // $user = User::find(1);
-
+        $user = User::where('id',auth()->user()->id)->get();
+        // $user = User::where('id',1)->get();
         $i = 0;
         $purchases = DB::table('products')->
         join('purchases','products.id','=','purchases.product_id')->
         join('users','users.id','=','purchases.user_id')->
-        where('user_id',1)->
+        where('user_id',auth()->user()->id)->
         select('products.id','products.name','products.prise','products.picture','purchases.created_at','purchases.updated_at')->get();
+    return view('user.purchases',compact('categories','purchases','i','user'));
+
+}
 
 
+public function indexFavorite(){
 
-    // dd($purchases);
-    return view('user.purchases',compact('categories','purchases','i'));
+    $categories = Categorie::all();
+    $user = User::where('id',auth()->user()->id)->get();
 
-    // $user = User::factory()
-    //         ->has(Post::factory()->count(3))
-    //         ->create();
+        // $i = 0;
+        $favorites = DB::table('products')->
+        join('favorites','products.id','=','favorites.product_id')->
+        join('users','users.id','=','favorites.user_id')->
+        where('user_id',1/*auth()->user()->id*/)->
+        select('products.id','products.name','products.prise','products.picture','products.description')->get();
+    return view('user.favorite',compact('categories','favorites','user'));
+
 }
 
 }

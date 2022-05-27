@@ -246,7 +246,7 @@ Home
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            AhmedAlhopip<img src="img/1.jpg" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
                 style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -266,7 +266,7 @@ Home
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="/">Logout</a></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
             {{-- <li>
                 <hr class="dropdown-divider">
             </li> --}}

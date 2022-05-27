@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
@@ -27,7 +28,9 @@ class HomeController extends Controller
     {
         $categories = Categorie::all();
     $populars = Product::all()->where('id','<','10')->sortBy('id');
-    return view('auth.login',compact('categories','populars'));
-        // return view('home');
+    $user = User::find(auth()->user()->id);
+    // return view('user.loged',compact('categories','populars','user'));
+    return view('home',compact('categories','populars','user'));
+        // return view('loged');
     }
 }

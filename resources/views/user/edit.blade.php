@@ -16,9 +16,9 @@ Your Profile
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center" style="height: 340px;padding: 0px;">
-                            <img src="{{ $user->picture }}" alt="Admin"
-                                class="rounded-circle" width="280" >
+                        <div class="d-flex flex-column align-items-center text-center"
+                            style="height: 340px;padding: 0px;">
+                            <img src="{{ $user->picture }}" alt="Admin" class="rounded-circle" width="280">
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,8 @@ Your Profile
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     @csrf
-                                    <input type="email" class="form-control" value="{{ $user->email }}" name="email" disabled >
+                                    <input type="email" class="form-control" value="{{ $user->email }}" name="email"
+                                        disabled>
                                 </div>
                             </div>
                             <hr>
@@ -87,7 +88,7 @@ Your Profile
 
                                     <div class="image-upload-wrap">
                                         <input class="file-upload-input" type='file' onchange="readURL(this);"
-                                            accept="image/*" name="picture"/>
+                                            accept="image/*" name="picture" />
                                         <div class="drag-text">
                                             <h3>Drag and drop an Image</h3>
                                         </div>
@@ -95,14 +96,14 @@ Your Profile
                                     <div class="file-upload-content">
                                         <img class="file-upload-image" src="#" alt="your image" />
                                         <div class="image-title-wrap">
-                                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
-                                                    class="image-title">Uploaded Image</span></button>
+                                            <button type="button" onclick="removeUpload()" class="remove-image">Remove
+                                                <span class="image-title">Uploaded Image</span></button>
                                         </div>
                                     </div>
                                 </div>
                                 {{-- <div>
                                     <label for="formFileLg" class="form-label">Large file input example</label>
-                                    <input class="form-control form-control-lg" id="picture" name="picture" type="file" >
+                                    <input class="form-control form-control-lg" id="picture" name="picture" type="file">
                                 </div> --}}
                             </div>
                             <hr>
@@ -114,10 +115,10 @@ Your Profile
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
+                </div>
 
-                        </form>
+                </form>
 
             </div>
 
@@ -173,7 +174,6 @@ $('.image-upload-wrap').removeClass('image-dropping');
 
 @section('style')
 <style>
-
     .wer {
         display: flex;
         justify-content: space-around;
@@ -367,7 +367,7 @@ $('.image-upload-wrap').removeClass('image-dropping');
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            AhmedAlhopip<img src="img/1.jpg" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
                 style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -387,7 +387,7 @@ $('.image-upload-wrap').removeClass('image-dropping');
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="/">Logout</a></li>
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
             {{-- <li>
                 <hr class="dropdown-divider">
             </li> --}}

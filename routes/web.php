@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Categorie;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategorieController;
 
@@ -33,11 +36,23 @@ Route::get('/user',function(){
 Route::get('/',[CategorieController::class,'index'])->name('indexindex');
 
 
-Route::get('/id',function(){
-    $categories = Categorie::all();
-    $populars = Product::all()->where('id','<','10')->sortBy('id');
-    return view('user.loged',compact('categories','populars'));
-})->name('loged');
+// Route::get('/home',function(){
+//     $categories = Categorie::all();
+//     $populars = Product::all()->where('id','<','10')->sortBy('id');
+//     $user = User::where('id',auth()->user()->id)->get();
+//     return view('user.loged',compact('categories','populars','user'));
+// })->name('loged');
+
+
+// Route::post('/home',function(){
+//     $categories = Categorie::all();
+//     $popugars = Product::all()->where('id','<','10')->sortBy('id');
+//     $user = User::find(auth()->user()->id);
+//     return view('user.loged',compact('categories','populars','user'));
+// })->name('loged');
+
+
+
 
 Route::get('/ids',function(){
     return view('user.categories');
@@ -73,12 +88,15 @@ Route::post('/edit',[UserController::class,'update'])->name('update.user');
 
 Route::get('/purchases',[UserController::class,'indexPurchase'])->name('indexPurchase');
 
-Route::get('/favorite',function(){
-    return view('user.favorite');
-});
+Route::get('/favorite',[UserController::class,'indexFavorite'])->name('indexFavorite');
 
 Route::get('/chpassword',function(){
-    return view('user.chpassword');
+    $user = User::where('id',auth()->user()->id)->get();
+    // $user = DB::table('users')->find(1);
+    $categories = Categorie::all();
+    // $user = User::find(1);
+    // dd($user);
+    return view('auth.passwords.reset',compact('user','categories'));
 });
 
 Route::get('/reg',function(){
@@ -95,3 +113,7 @@ Route::get('/admin',function(){
 
 Route::get('/buying/{id}',[UserController::class,'addCart'])->name('addCart');
 Route::get('/preference/{id}',[UserController::class,'addFavorite'])->name('addFavorite');
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
