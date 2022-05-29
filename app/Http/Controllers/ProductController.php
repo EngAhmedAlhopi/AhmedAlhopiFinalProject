@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Product;
+use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -12,6 +15,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -44,9 +53,18 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        $product = Product::find($id);
+        $categories = Categorie::all();
+        $found = false;
+        $categorie = Categorie::find($id);
+        if (Auth::check()) {
+            $user = User::find(auth()->user()->id);
+            $found = true;
+            return view('user.show', compact('products', 'categories', 'user', 'found', 'categorie'));
+        }
+        return view('user.show', compact('products', 'categories', 'found', 'categorie'));
     }
 
     /**

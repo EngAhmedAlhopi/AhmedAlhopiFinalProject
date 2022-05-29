@@ -5,13 +5,9 @@ Your Profile
 @section('container')
 <div class="container">
     <div class="main-body">
-
-        <!-- Breadcrumb -->
         <br>
         <h5 style="text-align: center;">Your Profile</h5>
         <br>
-        <!-- /Breadcrumb -->
-
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -85,7 +81,6 @@ Your Profile
                                     <button class="file-upload-btn" type="button"
                                         onclick="$('.file-upload-input').trigger( 'click' )">Change
                                         Image</button>
-
                                     <div class="image-upload-wrap">
                                         <input class="file-upload-input" type='file' onchange="readURL(this);"
                                             accept="image/*" name="picture" />
@@ -101,36 +96,24 @@ Your Profile
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div>
-                                    <label for="formFileLg" class="form-label">Large file input example</label>
-                                    <input class="form-control form-control-lg" id="picture" name="picture" type="file">
-                                </div> --}}
                             </div>
                             <hr>
                             <div class="wer">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        {{-- <a class="btn btn-info " target="__blank">Save</a> --}}
                                         <button type="submit" class="btn btn-success">Save</button>
                                     </div>
                                 </div>
                             </div>
                     </div>
                 </div>
-
                 </form>
-
             </div>
-
-
-
         </div>
     </div>
 
 </div>
 </div>
-
-
 <script class="jsbin" src="bootstrap/jq/jquery.min.js"></script>
 
 <script>
@@ -367,8 +350,8 @@ $('.image-upload-wrap').removeClass('image-dropping');
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
-                style="margin-left: 10px;border-radius: 50%">
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px"
+                height="30px" style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
@@ -388,25 +371,15 @@ $('.image-upload-wrap').removeClass('image-dropping');
                 <hr class="dropdown-divider">
             </li>
             <li>
-                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        {{-- {{ __('Logout') }} --}}Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
-            {{-- <li>
-                <hr class="dropdown-divider">
-            </li> --}}
-            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
         </ul>
-
     </div>
-
-
 </li>
 @endsection

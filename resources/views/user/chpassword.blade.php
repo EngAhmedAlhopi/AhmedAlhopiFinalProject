@@ -9,9 +9,7 @@ Edit Password
     <div class="card login-form">
         <div class="card-body">
             <h3 class="card-title text-center">Edit Password</h3>
-
             <!--Password must contain one lowercase letter, one number, and be at least 7 characters long.-->
-
             <div class="card-text">
                 <form method="POST" action="{{ route('resetPassword') }}">
                     @csrf
@@ -51,7 +49,6 @@ Edit Password
     }
 
     .ed {
-        /* border: solid 2px red; */
         width: 360px;
         height: auto;
         ;
@@ -154,26 +151,16 @@ Edit Password
                 <hr class="dropdown-divider">
             </li>
             <li>
-                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        {{-- {{ __('Logout') }} --}}Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
-            {{-- <li>
-                <hr class="dropdown-divider">
-            </li> --}}
-            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
         </ul>
-
     </div>
-
-
 </li>
 @endsection
 @endsection

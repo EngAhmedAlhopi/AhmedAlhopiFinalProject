@@ -4,12 +4,9 @@ Contact Us
 @endsection
 @section('container')
 <!------ Include the above in your HEAD tag ---------->
-
-
-
-
 <div class="well well-sm" id="cont">
-    <form class="form-horizontal" action="" method="post">
+    <form class="form-horizontal" action="/idc" method="post">
+        @csrf
         <fieldset>
             <legend class="text-center">Contact us</legend>
 
@@ -50,8 +47,6 @@ Contact Us
     </form>
 </div>
 
-
-
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap/jq/jquery.min.js"></script>
 
@@ -59,7 +54,6 @@ Contact Us
 @section('style')
 <style>
     #cont {
-        /* border: solid red 1px; */
         width: 1000px;
         height: 500px;
         margin-left: auto;
@@ -67,7 +61,6 @@ Contact Us
     }
 
     form {
-        /* border: solid blue 1px; */
         width: 500px;
         height: 500px;
         margin-left: auto;
@@ -79,21 +72,15 @@ Contact Us
     #name,
     #email,
     #message {
-        /* border: solid red 1px; */
         width: 100%;
         margin: 10px;
     }
 
     #send {
-        /* border: solid red 1px; */
         width: 80%;
-        /* margin-left: auto; */
-        /* margin-right: auto; */
     }
 </style>
 @endsection
-
-
 @if ($found)
 @section('rnav')
 <li class="nav-item dropdown" style="margin-top: -20px ;margin-right:45px;">
@@ -121,35 +108,21 @@ Contact Us
                 <hr class="dropdown-divider">
             </li>
             <li>
-                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        {{-- {{ __('Logout') }} --}}Logout
+                        Logout
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
             </li>
-            {{-- <li>
-                <hr class="dropdown-divider">
-            </li> --}}
-            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-        </ul>
-
+            </ul>
     </div>
-
-
 </li>
 @endsection
 @else
 @section('rnav')
-{{-- <a href="/log"> <button class="btn btn-outline-success" type="button" style="margin-right: 15px">
-        Login</button></a>
-<a href="/reg"> <button class="btn btn-outline-info" type="submit">Register</button></a> --}}
 <ul class="navbar-nav ms-auto">
-    <!-- Authentication Links -->
     @guest
     @if (Route::has('login'))
     <li class="nav-item">

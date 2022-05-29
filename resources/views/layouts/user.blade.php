@@ -5,31 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    {{--
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
+    {{--
+    <link href="fontawesome/css/all.min.css" rel="stylesheet"> --}}
+    <link href="{{asset('fontawesome/css/all.min.css')}}" rel="stylesheet">
     <title>@yield('title','NanoTech')</title>
     @yield('style')
     <style>
-        .zxc{
+        .zxc {
             display: block;
-            margin-left:auto;
+            margin-left: auto;
             margin-right: auto;
         }
     </style>
 </head>
 
 <body>
-
-
-
-
-
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="id">NanoTech</a>
+            <a class="navbar-brand">NanoTech</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -38,44 +35,28 @@
             <div class="zxc">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" >
+                        <li class="nav-item">
+                            @if ($found)
+                            <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                            @else
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            @endif
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li> --}}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach ($categories as $categorie)
-                                <li><a class="dropdown-item" href="/ids">{{ $categorie->name }}</a></li>
+                                @foreach ($categories as $categorie)
+                                <li><a class="dropdown-item" href="{{ route('allProducts',[$categorie->id]) }}">{{
+                                        $categorie->name }}</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-
                                 @endforeach
-
-                                {{-- <li><a class="dropdown-item" href="/ids">PC</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="ids">Phone</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="ids">Accessories</a></li> --}}
-                                {{-- <li>
-                                    <hr class="dropdown-divider">
-                                </li> --}}
-                                {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link ">Disabled</a>
-                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="/ida">Who are we?</a>
                         </li>
@@ -83,64 +64,17 @@
                             <a class="nav-link" href="idc">Contact us</a>
                         </li>
                     </ul>
-                    {{-- <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> --}}
-
-
                 </div>
-
             </div>
             @yield('rnav')
         </div>
     </nav>
     <!-- Navbar -->
-
-
-
-
-
-
-
     <!-- Container -->
     <div class="container-fluid">
-        {{-- <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br> --}}
         @yield('container')
     </div>
     <!-- Container -->
-
-
-
-
-
-
-
-
     <!-- Footer -->
     <footer class="bg-dark text-center text-white">
         <!-- Grid container -->
@@ -316,17 +250,19 @@
 
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © Developed by :< Ahmed Alhopi > in 2022
-            {{-- <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a> --}}
+            © Developed by :< Ahmed Alhopi> in 2022
+                {{-- <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a> --}}
         </div>
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="bootstrap/jq/bootstrap.min.js"></script>
+    {{-- <script src="bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- <script src="bootstrap/jq/bootstrap.min.js"></script> --}}
+    <script src="{{asset('bootstrap/jq/bootstrap.min.js') }}"></script>
     {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script> --}}
-    <script src="bootstrap/jq/jquery.min.js"></script>
+    {{-- <script src="bootstrap/jq/jquery.min.js"></script> --}}
+    <script src="{{asset('bootstrap/jq/jquery.min.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 
 </body>

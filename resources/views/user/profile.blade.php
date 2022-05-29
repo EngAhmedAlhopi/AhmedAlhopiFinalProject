@@ -5,29 +5,23 @@ Your Profile
 @section('container')
 <div class="container">
     <div class="main-body">
-
-        <!-- Breadcrumb -->
         <br>
         <h5 style="text-align: center;">Your Profile</h5>
         <br>
-        <!-- /Breadcrumb -->
-
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-flex flex-column align-items-center text-center" style="height: 340px;padding: 0px;">
-                            <img src="{{ $user->picture }}"  alt="Admin"
-                                class="rounded-circle" width="280" >
+                        <div class="d-flex flex-column align-items-center text-center"
+                            style="height: 340px;padding: 0px;">
+                            <img src="{{ $user->picture }}" alt="Admin" class="rounded-circle" width="280">
                         </div>
-                        {{-- src="storage/pictures/1-AhmedAlhopi-1653578594-css.png" --}}
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="card mb-3">
                     <div class="card-body">
-
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Full Name</h6>
@@ -73,52 +67,20 @@ Your Profile
                             </div>
                         </div>
                         <hr>
-                        {{-- <div class="row">
-                            <div class="file-upload">
-                                <button class="file-upload-btn" type="button"
-                                    onclick="$('.file-upload-input').trigger( 'click' )">Change
-                                    Image</button>
-
-                                <div class="image-upload-wrap">
-                                    <input class="file-upload-input" type='file' onchange="readURL(this);"
-                                        accept="image/*" />
-                                    <div class="drag-text">
-                                        <h3>Drag and drop an Image</h3>
-                                    </div>
-                                </div>
-                                <div class="file-upload-content">
-                                    <img class="file-upload-image" src="#" alt="your image" />
-                                    <div class="image-title-wrap">
-                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
-                                                class="image-title">Uploaded Image</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr> --}}
                         <div class="wer">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <a class="btn btn-info " href="/edit">Edit</a>
                                 </div>
                             </div>
-
+                        </div>
                     </div>
                 </div>
-
             </div>
-
-
-
         </div>
     </div>
-
 </div>
-</div>
-
-
 <script class="jsbin" src="bootstrap/jq/jquery.min.js"></script>
-
 <script>
     function readURL(input) {
 if (input.files && input.files[0]) {
@@ -153,14 +115,9 @@ $('.image-upload-wrap').bind('dragleave', function () {
 $('.image-upload-wrap').removeClass('image-dropping');
 });
 </script>
-
-
-
 @endsection
-
 @section('style')
 <style>
-
     .wer {
         display: flex;
         justify-content: space-around;
@@ -348,14 +305,13 @@ $('.image-upload-wrap').removeClass('image-dropping');
     }
 </style>
 @endsection
-
 @section('rnav')
 <li class="nav-item dropdown" style="margin-top: -20px ;margin-right:45px;">
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
-                style="margin-left: 10px;border-radius: 50%">
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px"
+                height="30px" style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
@@ -375,25 +331,15 @@ $('.image-upload-wrap').removeClass('image-dropping');
                 <hr class="dropdown-divider">
             </li>
             <li>
-                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        {{-- {{ __('Logout') }} --}}Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
-            {{-- <li>
-                <hr class="dropdown-divider">
-            </li> --}}
-            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
         </ul>
-
     </div>
-
-
 </li>
 @endsection

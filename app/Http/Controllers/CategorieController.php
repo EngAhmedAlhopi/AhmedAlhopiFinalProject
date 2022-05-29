@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use App\Models\Popular;
 use App\Models\Product;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
 
 
@@ -17,19 +19,44 @@ class CategorieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index()
     {
         $categories = Categorie::all();
+        $found = false;
         // $populars = Product::auth('popular_id')->groupBy('id');//==> مفتاح مرجع لعرض البيانات
         // $populars = new Product();
-        $populars = Product::all()->where('id','<','10')->sortBy('id');
+        $populars = DB::table('products')->join('populars','product_id','products.id')->
+        select('products.id','products.categorie_id','products.name','products.prise','products.description','products.information','products.picture')->
+        get();        if (Auth::check()) {
+            $found = true;
+        }
         // view('layouts.user',compact('categories','populars'));
         // view('user.loged',compact('categories','populars'));
         // dd($populars);
-        return view('user.index',compact('categories','populars'));
+        return view('user.index', compact('categories', 'populars', 'found'));
         // return view('layouts.user',compact('categories','populars'));
     }
 
+    public function allProducts($id)
+    {
+
+        $products = Product::where('categorie_id',$id)->get();
+        $categories = Categorie::all();
+        $found = false;
+        $categorie = Categorie::find($id);
+        if (Auth::check()) {
+            $user = User::find(auth()->user()->id);
+            $found = true;
+            return view('user.categories', compact('products', 'categories', 'user', 'found', 'categorie'));
+        }
+
+        return view('user.categories', compact('products', 'categories', 'found', 'categorie'));
+    }
     /**
      * Show the form for creating a new resource.
      *

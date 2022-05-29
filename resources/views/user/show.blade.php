@@ -1,34 +1,66 @@
 @extends('layouts.user')
 @section('title')
-About Us
+{{ $product->name }}
 @endsection
 @section('container')
-ahmedalhopi
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="body">
+
+    <div class="product">
+        <h4><span class="data">Name : </span>{{ $product->name }}</h4>
+        <br>
+        <h4><span class="data">Price : </span>{{ $product->prise }} $</h4>
+        <br>
+        <h4><span class="data">Description : </span>{{ $product->description }}</h4>
+        <br>
+        <h4><span class="data">Information : </span>{{ $product->information }}</h4>
+    </div>
+
+    <div class="product">
+        <div class="img">
+            <div class="text-center">
+                <img src="{{ asset($product->picture) }}" class="picture">
+            </div>
+        </div>
+    </div>
+
+
+</div>
 
 @endsection
 
 @section('style')
 <style>
+    .body {
+        display: flex;
+        height: 700px;
+    }
 
+    .product {
+        height: 600px;
+        width: 50%;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .img {
+        height: 600px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .picture{
+        width: 100%;
+        height: 550px;
+    }
+
+    .data{
+        color: blue;
+    }
 </style>
 @endsection
-
-
 @if ($found)
 @section('rnav')
 <li class="nav-item dropdown" style="margin-top: -20px ;margin-right:45px;">
@@ -56,21 +88,15 @@ ahmedalhopi
                 <hr class="dropdown-divider">
             </li>
             <li>
-                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        {{-- {{ __('Logout') }} --}}Logout
-                    </a>
+                    Logout
+                </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
-            {{-- <li>
-                <hr class="dropdown-divider">
-            </li> --}}
-            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
         </ul>
 
     </div>
@@ -81,14 +107,12 @@ ahmedalhopi
 @else
 @section('rnav')
 <ul class="navbar-nav ms-auto">
-    <!-- Authentication Links -->
     @guest
     @if (Route::has('login'))
     <li class="nav-item">
         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
     </li>
     @endif
-
     @if (Route::has('register'))
     <li class="nav-item">
         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -100,13 +124,11 @@ ahmedalhopi
             aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }}
         </a>
-
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
             </a>
-
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
@@ -116,3 +138,7 @@ ahmedalhopi
 </ul>
 @endsection
 @endif
+
+
+
+

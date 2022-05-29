@@ -3,10 +3,7 @@
 Purchases
 @endsection
 @section('container')
-<!------ Include the above in your HEAD tag ---------->
 <div class="table">
-
-
     <table class="table table-striped">
         <thead>
             <tr>
@@ -19,9 +16,7 @@ Purchases
             </tr>
         </thead>
         <tbody>
-
             @foreach ($purchases as $purchase)
-
             <tr>
                 <th scope="row">{{ ++$i }}</th>
                 <td>{{ $purchase->name }}</td>
@@ -31,8 +26,6 @@ Purchases
                 <td>{{ $purchase->updated_at }}</td>
             </tr>
             @endforeach
-
-
         </tbody>
     </table>
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -56,8 +49,8 @@ Purchases
     <div class="tyu">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false" style="color: #fff">
-            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px" height="30px"
-                style="margin-left: 10px;border-radius: 50%">
+            {{ $user->name }}<img src="{{ $user->picture }}" class="img-circle" alt="Cinque Terre" width="30px"
+                height="30px" style="margin-left: 10px;border-radius: 50%">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
@@ -77,25 +70,15 @@ Purchases
                 <hr class="dropdown-divider">
             </li>
             <li>
-                {{-- <a class="dropdown-item" href="/logout">Logout</a> --}}
-                {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> --}}
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                        {{-- {{ __('Logout') }} --}}Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </li>
-            {{-- <li>
-                <hr class="dropdown-divider">
-            </li> --}}
-            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
         </ul>
-
     </div>
-
-
 </li>
 @endsection

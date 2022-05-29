@@ -4,8 +4,6 @@ Home Page
 @endsection
 @section('container')
 <br>
-
-
 <!---->
 <div class="ghj">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -35,34 +33,19 @@ Home Page
         </a>
     </div>
 </div>
-
-
-
-
 @foreach ( $categories as $categorie )
-
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <h3 class="mb-3">Popular {{ $categorie->name }} </h3>
             </div>
-
             <div class="col-12">
                 <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-
-
-
-
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-
-
                             <div class="row">
-
-
                                 @foreach ( $populars as $popular )
-
                                 @if($popular->categorie_id == $categorie->id)
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
@@ -71,38 +54,20 @@ Home Page
                                             <h4 class="card-title">Special title treatment</h4>
                                             <p class="card-text">With supporting text below as a natural lead-in to
                                                 additional content.</p>
-
                                         </div>
-
                                     </div>
                                 </div>
                                 @endif
-
                                 @endforeach
-
-
-
                             </div>
-
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 </section>
-
 <hr>
-
 @endforeach
-
-
 @endsection
 @section('style')
 <style>
@@ -116,11 +81,7 @@ Home Page
     }
 </style>
 @endsection
-
 @section('rnav')
-{{-- <a href="/log"> <button class="btn btn-outline-success" type="button" style="margin-right: 15px">
-        Login</button></a>
-<a href="/reg"> <button class="btn btn-outline-info" type="submit">Register</button></a> --}}
 <ul class="navbar-nav ms-auto">
     <!-- Authentication Links -->
     @guest
@@ -137,8 +98,8 @@ Home Page
     @endif
     @else
     <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }}
         </a>
 

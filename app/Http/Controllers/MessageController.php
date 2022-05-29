@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Admin;
+use App\Models\Message;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,23 +16,37 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
-    public function about()
+
+    public function call()
     {
         $categories = Categorie::all();
         $found = false;
         if (Auth::check()) {
             $user = User::find(auth()->user()->id);
             $found = true;
-            return view('user.about', compact('categories', 'user', 'found'));
+            return view('user.contact', compact('user', 'categories', 'found'));
+        } else {
+            $user = [
+                'name' => ' ',
+                'email' => ' '
+            ];
+            return view('user.contact', compact('user', 'categories', 'found'));
         }
-
-        return view('user.about', compact('categories', 'found'));
     }
+
+    public function send(Request $request){
+        $message = new Message();
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->message = $request->message;
+        $message->save();
+        return redirect()->back();
+    }
+
+
+
+
+
     public function index()
     {
         //
@@ -62,10 +76,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(Message $message)
     {
         //
     }
@@ -73,10 +87,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(Message $message)
     {
         //
     }
@@ -85,10 +99,10 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, Message $message)
     {
         //
     }
@@ -96,10 +110,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\Message  $message
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy(Message $message)
     {
         //
     }
