@@ -58,12 +58,31 @@ Home
                                                 <a href="{{ route('show',[$popular->id]) }}" class="btn btn-primary"
                                                     style="height: 40px;margin-top: auto;margin-bottom: auto;">Go
                                                     somewhere</a>
-                                                <div class="like">
-                                                    <a href="/preference/{{ $popular->id }}" class="abc"><i
-                                                            class="like2"></i></a>
-                                                    <a href="/buying/{{ $popular->id }}" class="abc"><i
-                                                            class="fas fa-shopping-basket"></i></a>
-                                                </div>
+                                                    <div class="like">
+                                                        @foreach ($fav as $fa )
+                                                        @if ($fa->product_id == $popular->id)
+                                                        <a href="/preference/{{ $popular->id }}" class="abc"><i
+                                                                class="like2" style="color: red"></i></a>
+                                                        @php
+                                                        $arr[] = $popular->id;
+                                                        @endphp
+                                                        @endif
+                                                        @endforeach
+                                                        @foreach ($arr as $e)
+                                                        @if ($e == $popular->id)
+                                                        @php($i = false)
+                                                        @break
+                                                        @else
+                                                        @php($i = true)
+                                                        @endif
+                                                        @endforeach
+                                                        @if ($i)
+                                                        <a href="/preference/{{ $popular->id }}" class="abc"><i
+                                                                class="like2"></i></a>
+                                                        @endif
+                                                        <a href="/buying/{{ $popular->id }}" class="abc"><i
+                                                                class="fas fa-shopping-basket"></i></a>
+                                                    </div>
                                                 </a>
                                             </div>
                                         </div>
@@ -127,6 +146,7 @@ Home
         color: #aaa;
         transition: .2s;
     }
+
 
     .like2:hover {
         color: #666;

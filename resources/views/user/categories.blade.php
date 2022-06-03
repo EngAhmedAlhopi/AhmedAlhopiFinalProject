@@ -34,8 +34,27 @@
                                                     style="height: 40px;margin-top: auto;margin-bottom: auto;">Go
                                                     somewhere</a>
                                                 <div class="like">
+                                                    @foreach ($fav as $fa )
+                                                    @if ($fa->product_id == $product->id)
+                                                    <a href="/preference/{{ $product->id }}" class="abc"><i
+                                                            class="like2" style="color: red"></i></a>
+                                                    @php
+                                                    $arr[] = $product->id;
+                                                    @endphp
+                                                    @endif
+                                                    @endforeach
+                                                    @foreach ($arr as $e)
+                                                    @if ($e == $product->id)
+                                                    @php($i = false)
+                                                    @break
+                                                    @else
+                                                    @php($i = true)
+                                                    @endif
+                                                    @endforeach
+                                                    @if ($i)
                                                     <a href="/preference/{{ $product->id }}" class="abc"><i
                                                             class="like2"></i></a>
+                                                    @endif
                                                     <a href="/buying/{{ $product->id }}" class="abc"><i
                                                             class="fas fa-shopping-basket"></i></a>
                                                 </div>
@@ -73,7 +92,7 @@
                                 @if($product->categorie_id == $categorie->id)
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="{{asset($product->piture) }}">
+                                        <img class="img-fluid" alt="100%x280" src="{{asset($product->picture) }}">
                                         <div class="card-body">
                                             <h4 class="card-title">Special title treatment</h4>
                                             <p class="card-text">With supporting text below as a natural lead-in to
@@ -220,6 +239,17 @@
         display: inline-block;
         margin: 0 0 15px;
         color: #aaa;
+        transition: .2s;
+    }
+
+    .like5 {
+        cursor: pointer;
+        padding: 10px 12px 8px;
+        background: #fff;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 0 15px;
+        color: red;
         transition: .2s;
     }
 

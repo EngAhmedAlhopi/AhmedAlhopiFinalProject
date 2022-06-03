@@ -32,7 +32,8 @@ class UserController extends Controller
     {
         $categories = Categorie::all();
         $user = User::find(auth()->user()->id);
-        return view('user.edit', compact('categories', 'user'));
+        $found = true;
+        return view('user.edit', compact('categories', 'user','found'));
     }
 
     public function update(Request $request)
@@ -60,7 +61,8 @@ class UserController extends Controller
             ]);
         }
         $user = User::find($request->id);
-        return view('user.profile', compact('user', 'categories'));
+        $found = true;
+        return view('user.profile', compact('user', 'categories','found'));
     }
 
     public function addCart(Request $request)
@@ -75,12 +77,29 @@ class UserController extends Controller
 
     public function addFavorite(Request $request)
     {
-        $favorite = new Favorite();
-        $favorite->user_id = auth()->user()->id;
-        $favorite->product_id = $request->id;
-        $favorite->created_at = now();
-        $favorite->save();
-        return redirect()->back();
+        $f = Favorite::all();
+        $test = auth()->user()->id;
+        $found = false;
+        foreach($f as $v){
+            if(($v->user_id == auth()->user()->id) && ($v->product_id == $request->id) ){
+                $found = true;
+            }
+        }
+            if($found == false){
+                $favorite = new Favorite();
+                $favorite->user_id = auth()->user()->id;
+                $favorite->product_id = $request->id;
+                $favorite->created_at = now();
+                $favorite->save();
+                return redirect()->back();
+                
+            }
+            else{
+                $f = Favorite::where('user_id',auth()->user()->id)->where('product_id',$request->id);
+                $f->delete();
+                return redirect()->back();
+            }
+
     }
 
     public function indexPurchase()
@@ -98,8 +117,11 @@ class UserController extends Controller
         $categories = Categorie::all();
         $user = User::find(auth()->user()->id);
         $found = true;
+        $fav = Favorite::where('user_id',auth()->user()->id)->get();
+        $i = true;
+        $arr = [0];
         $favorites = DB::table('products')->join('favorites', 'products.id', '=', 'favorites.product_id')->join('users', 'users.id', '=', 'favorites.user_id')->where('user_id', auth()->user()->id)->select('products.id', 'products.name', 'products.prise', 'products.picture', 'products.description')->get();
-        return view('user.favorite', compact('categories', 'favorites', 'user', 'found'));
+        return view('user.favorite', compact('categories', 'favorites', 'user', 'found','fav','i','arr'));
     }
 
     public function resetPassword(Request $request)

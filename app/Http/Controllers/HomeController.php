@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Favorite;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -38,7 +39,10 @@ class HomeController extends Controller
         if (Auth::check()) {
             $found = true;
         }
-        return view('user.loged', compact('categories', 'populars', 'user', 'found'));
+        $fav = Favorite::where('user_id',auth()->user()->id)->get();
+        $i = true;
+        $arr = [0];
+        return view('user.loged', compact('categories', 'populars', 'user', 'found','fav','i','arr'));
         // return view('home',compact('categories','populars','user'));
         // return view('loged');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Popular;
 use App\Models\Product;
+use App\Models\Favorite;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,7 +53,11 @@ class CategorieController extends Controller
         if (Auth::check()) {
             $user = User::find(auth()->user()->id);
             $found = true;
-            return view('user.categories', compact('products', 'categories', 'user', 'found', 'categorie'));
+            $fav = Favorite::where('user_id',auth()->user()->id)->get();
+            $i = true;
+            $arr = [0];
+            // dd($fav);
+            return view('user.categories', compact('products', 'categories', 'user', 'found', 'categorie','fav','i','arr'));
         }
 
         return view('user.categories', compact('products', 'categories', 'found', 'categorie'));

@@ -49,7 +49,7 @@ Home Page
                                 @if($popular->categorie_id == $categorie->id)
                                 <div class="col-md-4 mb-3">
                                     <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="{{ $popular->description }}">
+                                        <img class="img-fluid" alt="100%x280" src="{{ asset($popular->picture) }}">
                                         <div class="card-body">
                                             <h4 class="card-title">Special title treatment</h4>
                                             <p class="card-text">With supporting text below as a natural lead-in to

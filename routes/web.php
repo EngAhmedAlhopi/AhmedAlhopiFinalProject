@@ -28,7 +28,17 @@ Route::get('/',[CategorieController::class,'index'])->name('indexindex');
 
 Route::get('categorie/{id}',[CategorieController::class,'allProducts'])->name('allProducts');
 
-Route::get('/ida',[AdminController::class,'about'])->name('about');
+Route::get('/ida',function(){
+    $categories = Categorie::all();
+        $found = false;
+        if (Auth::check()) {
+            $user = User::find(auth()->user()->id);
+            $found = true;
+            return view('user.about', compact('categories', 'user', 'found'));
+        }
+
+        return view('user.about', compact('categories', 'found'));
+})->name('about');
 
 Route::get('/idc',[MessageController::class,'call'])->name('call');
 
@@ -54,9 +64,7 @@ Route::get('/chpassword',function(){
 
 Route::post('/chpassword',[UserController::class,'resetPassword'])->name('resetPassword');
 
-Route::get('/admin',function(){
-    return view('layouts.admin');
-});
+Route::get('/admin',[AdminController::class,'index'])->name('indexAdmin');
 
 Route::get('/buying/{id}',[UserController::class,'addCart'])->name('addCart');
 
@@ -79,7 +87,22 @@ Route::get('show/{id}',function($id){
         return view('user.show', compact('product', 'categories', 'found', 'categorie'));
 })->name('show');
 
+Route::get('add-product',[AdminController::class,'newPrpduct'])->name('add-product');
 
+Route::post('add-product',[AdminController::class,'addProduct'])->name('add-new-product');
+
+Route::post('add-categorie',[AdminController::class,'addCategorie'])->name('addCategorie');
+
+Route::get('/all-products',[AdminController::class,'indexProducts'])->name('indexProducts');
+
+Route::post('show-product/{id}',[AdminController::class,'show'])->name('showProduct');
+
+Route::get('edit-product/{id}',[AdminController::class,'editPage'])->name('editProductPage');
+Route::post('edit-product/{id}',[AdminController::class,'edit'])->name('editProduct');
+
+Route::post('delete-product/{id}',[AdminController::class,'delete'])->name('deleteProduct');
+
+Route::post('addPopular-product/{id}',[AdminController::class,'addPopular'])->name('addPopular');
 
 
 

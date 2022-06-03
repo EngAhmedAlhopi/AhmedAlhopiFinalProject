@@ -24,12 +24,31 @@ Favorite
                                                 <a href="#" class="btn btn-primary"
                                                     style="height: 40px;margin-top: auto;margin-bottom: auto;">Go
                                                     somewhere</a>
-                                                <div class="like">
-                                                    <a href="/preference/{{ $favorite->id }}" class="abc"><i
-                                                            class="like2"></i></a>
-                                                    <a href="/buying/{{ $favorite->id }}" class="abc"><i
-                                                            class="fas fa-shopping-basket"></i></a>
-                                                </div>
+                                                    <div class="like">
+                                                        @foreach ($fav as $fa )
+                                                        @if ($fa->product_id == $favorite->id)
+                                                        <a href="/preference/{{ $favorite->id }}" class="abc"><i
+                                                                class="like2" style="color: red"></i></a>
+                                                        @php
+                                                        $arr[] = $favorite->id;
+                                                        @endphp
+                                                        @endif
+                                                        @endforeach
+                                                        @foreach ($arr as $e)
+                                                        @if ($e == $favorite->id)
+                                                        @php($i = false)
+                                                        @break
+                                                        @else
+                                                        @php($i = true)
+                                                        @endif
+                                                        @endforeach
+                                                        @if ($i)
+                                                        <a href="/preference/{{ $favorite->id }}" class="abc"><i
+                                                                class="like2"></i></a>
+                                                        @endif
+                                                        <a href="/buying/{{ $favorite->id }}" class="abc"><i
+                                                                class="fas fa-shopping-basket"></i></a>
+                                                    </div>
                                                 </a>
                                             </div>
                                         </div>
